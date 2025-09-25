@@ -3,6 +3,7 @@
     "module": "commonjs",
     "noImplicitAny": true,
     "removeComments": true,
+    "strictNullChecks": true,
     "outDir": "dist"
   }
 }
