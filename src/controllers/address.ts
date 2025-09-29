@@ -15,8 +15,23 @@ export const postAddress = async (req: Request, res: Response) => {
 export const getAllAddresses = async (req: Request, res: Response) => {
   try{
     const addresses = await Address.find({});
+    console.log(addresses)
     res.json(addresses);
   }catch(e){
+    res.sendStatus(500);
+  }
+}
+
+export const getStatus = async (req: Request, res: Response) => {
+  const {id} = req.params;
+  try{
+    const add = await Address.findById(id);
+    res.json({
+      id: add?.id,
+      ip: add?.ip,
+      status: add?.status
+    });
+  } catch(e){
     res.sendStatus(500);
   }
 }
