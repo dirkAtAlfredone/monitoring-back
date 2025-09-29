@@ -13,15 +13,21 @@
     "dev": "npm run clean && npm run build && npm run watch"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.2",
+    "@types/ping": "^0.4.4",
+    "@types/tcp-ping": "^0.1.6",
     "rimraf": "^6.0.1",
     "tsc-watch": "^7.1.1",
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mongoose": "^8.18.2"
+    "mongoose": "^8.18.2",
+    "ping": "^0.4.4",
+    "tcp-ping": "^0.1.1"
   }
 }

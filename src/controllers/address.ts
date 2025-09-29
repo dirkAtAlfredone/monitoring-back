@@ -1,9 +1,22 @@
 import { Request, Response } from "express";
+import { Address } from "../models/address";
 
 export const postAddress = async (req: Request, res: Response) => {
-  res.json("postAddress reached...");
+  const body = req.body;
+  try{
+    const address = await Address.create(body);
+    res.sendStatus(201);
+  } catch(e){
+    console.log(e.message);
+    res.status(400).json(e.message);
+  }
 }
 
 export const getAllAddresses = async (req: Request, res: Response) => {
-  res.json("getAllAddresses reached...");
+  try{
+    const addresses = await Address.find({});
+    res.json(addresses);
+  }catch(e){
+    res.sendStatus(500);
+  }
 }
