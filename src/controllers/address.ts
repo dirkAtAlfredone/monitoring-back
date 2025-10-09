@@ -23,8 +23,10 @@ export const getAllAddresses = async (req: Request, res: Response) => {
 
 export const getStatus = async (req: Request, res: Response) => {
   const {id} = req.params;
+  console.log(id)
   try{
     const add = await Address.findById(id);
+    console.log(add);
     res.json({
       id: add?.id,
       ip: add?.ip,
