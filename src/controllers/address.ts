@@ -5,7 +5,7 @@ export const postAddress = async (req: Request, res: Response) => {
   const body = req.body;
   try{
     const address = await Address.create(body);
-    res.sendStatus(201);
+    res.status(201).json(address);
   } catch(e){
     console.log(e.message);
     res.status(400).json(e.message);
