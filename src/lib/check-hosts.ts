@@ -13,6 +13,7 @@ import * as icmpp from "ping";
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 const initiatePing = async () => {
+  console.log("pinging...");
   connect(CONNECTION_STRING as string);
   const hosts = await Address.find({});
   const pings = hosts.map(async (host) => {
