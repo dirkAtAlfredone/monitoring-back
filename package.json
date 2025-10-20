@@ -11,7 +11,8 @@
     "build": "tsc",
     "watch": "tsc-watch --onSuccess \"node dist/index.js\"",
     "dev": "npm run clean && npm run build && npm run watch",
-    "ping": "node dist/lib/check-hosts.js"
+    "ping": "node dist/lib/check-hosts.js",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
