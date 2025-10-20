@@ -10,7 +10,8 @@
     "clean": "rimraf dist",
     "build": "tsc",
     "watch": "tsc-watch --onSuccess \"node dist/index.js\"",
-    "dev": "npm run clean && npm run build && npm run watch"
+    "dev": "npm run clean && npm run build && npm run watch",
+    "ping": "node dist/lib/check-hosts.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

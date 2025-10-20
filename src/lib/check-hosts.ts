@@ -1,7 +1,19 @@
+import * as dotenv from "dotenv";
+
+const result = dotenv.config();
+
+if(result.error){
+  console.log(result.error.message);
+}
+
+import { connect, connection } from "mongoose";
 import { Address } from "../models/address";
 import * as icmpp from "ping";
 
-export const initiatePing = async () => {
+const CONNECTION_STRING = process.env.CONNECTION_STRING;
+
+const initiatePing = async () => {
+  connect(CONNECTION_STRING as string);
   const hosts = await Address.find({});
   const pings = hosts.map(async (host) => {
     return await icmpp.promise.probe(host.ip, { min_reply: 10 });
@@ -15,3 +27,9 @@ export const initiatePing = async () => {
     }
   }
 }
+
+(async () => {
+  await initiatePing();
+  setInterval(async() => await initiatePing(), 60000);
+})();
+

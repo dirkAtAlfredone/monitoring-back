@@ -11,7 +11,6 @@ import { addressRoute } from "./routes/address";
 import { connect, connection } from "mongoose";
 import * as cors from "cors";
 import { pingRoute } from "./routes/ping";
-import { initiatePing } from "./lib/check-hosts";
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = 4000;
@@ -20,9 +19,6 @@ connect(CONNECTION_STRING as string);
 
 connection.on("connected", async () => {
   console.log("Connected to MongoDB...");
-  console.log("initiating host check...");
-  await initiatePing();
-  setInterval(async () => await initiatePing(), 60000);
 });
 
 const app = express();
