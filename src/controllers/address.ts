@@ -23,10 +23,8 @@ export const getAllAddresses = async (req: Request, res: Response) => {
 
 export const getStatus = async (req: Request, res: Response) => {
   const {id} = req.params;
-  console.log(id)
   try{
     const add = await Address.findById(id);
-    console.log(add);
     res.json({
       id: add?.id,
       ip: add?.ip,
@@ -34,5 +32,22 @@ export const getStatus = async (req: Request, res: Response) => {
     });
   } catch(e){
     res.sendStatus(500);
+  }
+}
+
+export const deleteAddress = async (req: Request, res: Response) => {
+  const {id} = req.body;
+  try{
+    const deletedAddress = await Address.findByIdAndDelete(id);
+    if(deletedAddress){
+      res.sendStatus(204);
+    } else {
+      throw new Error("Not Found");
+    }
+  } catch(e){
+    console.log(e);
+    res.status(501).json({
+      error: e
+    });
   }
 }
