@@ -30,6 +30,6 @@ app.use(express.json());
 
 app.use("/api/v1/address", addressRoute);
 app.use("/api/v1/ping", pingRoute);
-app.use("/ap1/v1/resources", resourceRoute);
+app.use("/api/v1/resources", resourceRoute);
 
 app.listen(PORT, () => console.log(`Server started at port ${PORT}...`));
