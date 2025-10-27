@@ -11,6 +11,7 @@ import { addressRoute } from "./routes/address";
 import { connect, connection } from "mongoose";
 import * as cors from "cors";
 import { pingRoute } from "./routes/ping";
+import { resourceRoute } from "./routes/resource";
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 const PORT = 4000;
@@ -29,7 +30,6 @@ app.use(express.json());
 
 app.use("/api/v1/address", addressRoute);
 app.use("/api/v1/ping", pingRoute);
-
-app.use("/", (req, res) => res.json("You have reached Backend Server of AlfredOne Monitoring..."));
+app.use("/ap1/v1/resources", resourceRoute);
 
 app.listen(PORT, () => console.log(`Server started at port ${PORT}...`));
