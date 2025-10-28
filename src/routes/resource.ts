@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getNodeDNS, getResources } from "../controllers/resource";
+import { getNodeIP, getResources } from "../controllers/resource";
 
 export const resourceRoute = Router();
 
 resourceRoute.get("/", getResources);
 
-resourceRoute.get("/dns/node/:id", getNodeDNS);
+resourceRoute.get("/dns/node/:id", getNodeIP);
