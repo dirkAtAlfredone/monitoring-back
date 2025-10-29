@@ -42,7 +42,7 @@ export const getNodeIP = async (req: Request, res: Response) => {
 export const getNodeStatus = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { data } = await axios.get(`${PVE_URI}/api2/json/nodes/${id}/status`, { headers: { Authorization: AUTHORIZATION }, httpsAgent: HTTPS_AGENT });
-  res.json({ status : !!data.data.uptime? "online" : "offline" });
+  res.json({ status : !!data.data.uptime ? "online" : "offline" });
 }
 
 export const getVMIP = async (req: Request, res: Response) => {
@@ -61,3 +61,13 @@ export const getVMIP = async (req: Request, res: Response) => {
     res.status(200).json([]);
   }
 }
+
+export const getVMStatus = async (req: Request, res: Response) => {
+  const { id, node } = req.params;
+  try{
+    const { data } = await axios.get(`${PVE_URI}/api2/json/nodes/${node}/qemu/${id}/status/current`, { headers: { Authorization: AUTHORIZATION }, httpsAgent: HTTPS_AGENT });
+    res.json({status: data.data.status});
+  } catch(e){
+    res.json(e);
+  }
+};
